@@ -17,7 +17,11 @@ class User
 
     # Returns a Date object for the user's next birthday
     def next_birthday
-        
+        @year = Date.today.year
+        @mmdd = @date_of_birth.strftime('%m%d')
+        @year += 1 if @mmdd < Date.today.strftime('%m%d')
+        @mmdd = '0228' if @mmdd == '0229' && !Date.parse("#{@year}0101").leap?
+        @next_birthday = Date.parse("#{@year}#{@mmdd}")
     end
 end
 
