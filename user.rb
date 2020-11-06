@@ -11,7 +11,8 @@ class User
 
     # Returns an Integer representing the user’s current age
     def age
-        
+        @now = Date.today
+        @age = @now.year - @date_of_birth.year - ((@now.month > @date_of_birth.month || (@now.month == @date_of_birth.month && @now.day >= @date_of_birth.day)) ? 0 : 1)
     end
 
     # Returns a Date object for the user's next birthday
